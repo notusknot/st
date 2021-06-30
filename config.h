@@ -5,14 +5,12 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-/* Spare fonts */
-static char *font2[] = {
-/*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
-/*	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", */
-};
+static char *font = "JetBrains Mono:pixelsize=15:antialias=true:autohint=true";
+static int borderpx = 16;
 
-static int borderpx = 2;
+static char *font2[] = {
+    "JetBrainsMono Nerd Font:pixelsize=15:antialias=true:autohint=false",
+};
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -22,7 +20,7 @@ static int borderpx = 2;
  * 4: value of shell in /etc/passwd
  * 5: value of shell in config.h
  */
-static char *shell = "/bin/sh";
+static char *shell = "/etc/profiles/per-user/notus/bin/zsh";
 char *utmp = NULL;
 /* scroll program: to enable use a string like "scroll" */
 char *scroll = NULL;
@@ -97,29 +95,29 @@ char *termname = "st-256color";
  *
  *	stty tabs
  */
-unsigned int tabspaces = 8;
+unsigned int tabspaces = 4;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
+	"#2e303e",
+	"#ec6a88",
+	"#3fdaa4",
+	"#efb993",
+	"#6be6e6",
+	"#b771dc",
+	"#3fc6de",
+	"#e3e6ee",
 
 	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
+	"#44465c",
+	"#e95678",
+	"#29d398",
+	"#efb993",
+	"#59e3e3",
+	"#b072d1",
+	"#26bbd9",
+	"#e3e6ee",
 
 	[255] = 0,
 
@@ -205,8 +203,8 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ ControlMask,          XK_k,           kscrollup,      {.i = -1} },
+	{ ControlMask,          XK_j,           kscrolldown,    {.i = -1} },
 };
 
 /*
