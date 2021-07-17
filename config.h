@@ -9,7 +9,7 @@ static char *font = "JetBrains Mono:pixelsize=15:antialias=true:autohint=true";
 static int borderpx = 16;
 
 static char *font2[] = {
-    "JetBrainsMono Nerd Font:pixelsize=15:antialias=true:autohint=false",
+    "JetBrainsMono Nerd Font:pixelsize=12:antialias=true:autohint=true",
 };
 
 /*
@@ -20,7 +20,7 @@ static char *font2[] = {
  * 4: value of shell in /etc/passwd
  * 5: value of shell in config.h
  */
-static char *shell = "/etc/profiles/per-user/notus/bin/zsh";
+static char *shell = "zsh";
 char *utmp = NULL;
 /* scroll program: to enable use a string like "scroll" */
 char *scroll = NULL;
@@ -32,6 +32,21 @@ char *vtiden = "\033[?6c";
 /* Kerning / character bounding-box multipliers */
 static float cwscale = 1.0;
 static float chscale = 1.0;
+
+
+/*
+ * 1: render most of the lines/blocks characters without using the font for
+ *    perfect alignment between cells (U2500 - U259F except dashes/diagonals).
+ *    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
+ * 0: disable (render all U25XX glyphs normally from the font).
+ */
+const int boxdraw = 1;
+const int boxdraw_bold = 1;
+
+/* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
+const int boxdraw_braille = 0;
+
+
 
 /*
  * word delimiter string
